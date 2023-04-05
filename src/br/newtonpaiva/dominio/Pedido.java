@@ -10,13 +10,6 @@ public class Pedido {
     private ArrayList<Ingrediente> lista;
     private Double valorTotal;
 
-    @Override
-    public String toString() {
-        return "Pedido{" +
-                "lista=" + lista +
-                '}';
-    }
-
     public Double calculaValor(){
         valorTotal = getMassa().getValorMassa() + lista.size() * 2;
         return valorTotal;

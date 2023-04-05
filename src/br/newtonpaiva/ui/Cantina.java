@@ -1,9 +1,10 @@
-package br.newtonpaiva;
+package br.newtonpaiva.ui;
 
 import br.newtonpaiva.dominio.Cliente;
 import br.newtonpaiva.dominio.Ingrediente;
 import br.newtonpaiva.dominio.Massa;
 import br.newtonpaiva.dominio.Pedido;
+import jdk.nashorn.internal.scripts.JO;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class Cantina {
         m1.setTipoMassa(nomeM);
         m1.setValorMassa(valorM);
         Pedido p1 = new Pedido();
-        p1.setLista(new ArrayList<Ingrediente>());
+        p1.setLista(new ArrayList<>());
 
         while (opcao != 5){
             opcao = Integer.parseInt(JOptionPane.showInputDialog("Informe os ingrediente escolhidos:\n1- Bacon\n2- Mussarela\n3- Tomate\n4- Queijo\n5- Sair"));
@@ -54,13 +55,13 @@ public class Cantina {
                     break;
             }
         }
-        p1.calculaValor();
 
-        JOptionPane.showMessageDialog(null, "O pedido feito para " + c1.getNomeCliente());
-        JOptionPane.showMessageDialog(null, m1.getTipoMassa());
-        System.out.println(p1);
+        for (int i = 0; i < p1.getLista().size(); i++){
+            String ingredientes = p1.getLista().get(i).getNomeIngrediente();
+            System.out.println(ingredientes);
+        }
 
-
+        JOptionPane.showMessageDialog(null, "O pedido feito para " + c1.getNomeCliente() + "\n" + m1.getTipoMassa() + " Valor:  " + p1.getValorTotal(), "Informação", JOptionPane.INFORMATION_MESSAGE);
 
 
 
