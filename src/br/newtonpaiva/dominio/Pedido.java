@@ -10,9 +10,8 @@ public class Pedido {
     private ArrayList<Ingrediente> lista;
     private Double valorTotal;
 
-    public Double calculaValor(){
-        valorTotal = getMassa().getValorMassa() + lista.size() * 2;
-        return valorTotal;
+    public void calculaValor(Massa massa){
+        valorTotal = massa.getValorMassa() + lista.size() * 2;
     }
 
     public Massa getMassa() {

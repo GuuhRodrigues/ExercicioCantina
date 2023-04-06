@@ -55,15 +55,22 @@ public class Cantina {
                     break;
             }
         }
+        String mensagem = "";
+        int posicao = 0;
 
-        for (int i = 0; i < p1.getLista().size(); i++){
-            String ingredientes = p1.getLista().get(i).getNomeIngrediente();
-            System.out.println(ingredientes);
+        for (Ingrediente item : p1.getLista()){
+            if (posicao == p1.getLista().size() - 2){
+                mensagem += item.getNomeIngrediente() + " e ";
+            }
+            else if (posicao == p1.getLista().size() - 1){
+                mensagem += item.getNomeIngrediente() + ".";
+            }
+            else {
+                mensagem += item.getNomeIngrediente() + ", ";
+            }
+            posicao ++;
         }
-
-        JOptionPane.showMessageDialog(null, "O pedido feito para " + c1.getNomeCliente() + "\n" + m1.getTipoMassa() + " Valor:  " + p1.getValorTotal(), "Informação", JOptionPane.INFORMATION_MESSAGE);
-
-
-
+        p1.calculaValor(m1);
+        JOptionPane.showMessageDialog(null, "O pedido feito para " + c1.getNomeCliente() + "\n" + m1.getTipoMassa() + " com " + mensagem + "\nValor:  " + p1.getValorTotal(), "Informação", JOptionPane.INFORMATION_MESSAGE);
     }
 }
