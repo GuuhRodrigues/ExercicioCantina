@@ -13,18 +13,24 @@ import java.util.List;
 public class Cantina {
     public static void main(String[] args) {
 
-        String nomeC = "" , nomeM = "";
-        double valorM = 0.0;
-        int opcao = 0;
-
-        nomeC = JOptionPane.showInputDialog("Informe o nome do cliente: ");
-        nomeM = JOptionPane.showInputDialog("Informe o nome da massa: ");
-
         try {
+
+            String nomeC = "" , nomeM = "";
+            double valorM = 0.0;
+            int opcao = 0;
+
+
+            nomeC = JOptionPane.showInputDialog("Informe o nome do cliente: ");
+            if (nomeC.matches(".*\\d.*")){
+                throw new Exception("Contém números, digite apenas letras");
+            }
+            nomeM = JOptionPane.showInputDialog("Informe o nome da massa: ");
+            if (nomeM.matches(".*\\d.*")){
+                throw new Exception("Contém números, digite apenas letras");
+            }
             valorM = Double.parseDouble(JOptionPane.showInputDialog("Informe o valor da massa: "));
 
             Cliente c1 = new Cliente();
-            c1.setNomeCliente(nomeC);
             Massa m1 = new Massa();
             m1.setTipoMassa(nomeM);
             m1.setValorMassa(valorM);
@@ -72,8 +78,11 @@ public class Cantina {
             p1.calculaValor(m1);
             JOptionPane.showMessageDialog(null, "O pedido feito para " + c1.getNomeCliente() + "\n" + m1.getTipoMassa() + " com " + mensagem + "\nValor:  " + p1.getValorTotal(), "Informação", JOptionPane.INFORMATION_MESSAGE);
         }
-        catch (Exception e1){
-            JOptionPane.showMessageDialog(null, "Erro: Você não pode digitar letras");
+        catch (NumberFormatException e1){
+            JOptionPane.showMessageDialog(null, "Contém letras, digite apenas números");
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 }
