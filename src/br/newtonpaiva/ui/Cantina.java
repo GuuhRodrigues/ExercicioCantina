@@ -41,24 +41,24 @@ public class Cantina {
                 opcao = Integer.parseInt(JOptionPane.showInputDialog("Informe os ingrediente escolhidos:\n1- Bacon\n2- Mussarela\n3- Tomate\n4- Queijo\n5- Sair"));
                 switch (opcao) {
                     case 1:
-                        Ingrediente i1 = new Ingrediente();
-                        i1.setNomeIngrediente("Bacon");
-                        p1.getLista().add(i1);
+                        Ingrediente i = new Ingrediente();
+                        i.setNomeIngrediente("Bacon");
+                        p1.getLista().add(i);
                         break;
                     case 2:
-                        Ingrediente i2 = new Ingrediente();
-                        i2.setNomeIngrediente("Mussarela");
-                        p1.getLista().add(i2);
+                        i = new Ingrediente();
+                        i.setNomeIngrediente("Mussarela");
+                        p1.getLista().add(i);
                         break;
                     case 3:
-                        Ingrediente i3 = new Ingrediente();
-                        i3.setNomeIngrediente("Tomate");
-                        p1.getLista().add(i3);
+                        i = new Ingrediente();
+                        i.setNomeIngrediente("Tomate");
+                        p1.getLista().add(i);
                         break;
                     case 4:
-                        Ingrediente i4 = new Ingrediente();
-                        i4.setNomeIngrediente("Queijo");
-                        p1.getLista().add(i4);
+                        i = new Ingrediente();
+                        i.setNomeIngrediente("Queijo");
+                        p1.getLista().add(i);
                         break;
                 }
             }
@@ -75,7 +75,7 @@ public class Cantina {
                 }
                 posicao++;
             }
-            p1.calculaValor(m1);
+            p1.calculaValor(m1, 2.0);
             JOptionPane.showMessageDialog(null, "O pedido feito para " + c1.getNomeCliente() + "\n" + m1.getTipoMassa() + " com " + mensagem + "\nValor:  " + p1.getValorTotal(), "Informação", JOptionPane.INFORMATION_MESSAGE);
         }
         catch (NumberFormatException e1){
